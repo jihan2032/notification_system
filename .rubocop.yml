@@ -53,3 +53,9 @@ Style/RedundantRegexpEscape:
 
 Style/SlicingWithRange: 
   Enabled: true
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
