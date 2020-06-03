@@ -12,14 +12,11 @@ Metrics/ClassLength:
 Layout/LineLength:
   Max: 150
 
-Style/Documentation:
-  Enabled: false
-
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
 
 Layout/SpaceAroundMethodCallOperator:
-  Enabled: false 
+  Enabled: false
 
 Lint/DeprecatedOpenSSLConstant:
   Enabled: false
@@ -32,6 +29,12 @@ Lint/RaiseException:
 
 Lint/StructNewOverride:
   Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
 
 Style/ExponentialNotation:
   Enabled: true
@@ -51,11 +54,14 @@ Style/RedundantRegexpCharacterClass:
 Style/RedundantRegexpEscape:
   Enabled: false
 
-Style/SlicingWithRange: 
+Style/SlicingWithRange:
   Enabled: true
 
 Rails/HasManyOrHasOneDependent:
   Enabled: false
 
 Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Rails/FilePath:
   Enabled: false
