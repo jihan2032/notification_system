@@ -3,10 +3,12 @@
 class Notification < ApplicationRecord
   NOTIFICATION_TYPES = %w[group personalized].freeze
 
-  validates :kind, inclusion: { in: NOTIFICATION_TYPES }
+  validates :kind, inclusion: { in: NOTIFICATION_TYPES, message: "notification kind must be one of: #{NOTIFICATION_TYPES}" }
   validates :texts, :default_lang, presence: true
-  validate :language_codes
-  validate :default_text
+  validate :language_codes, if: -> { texts.present? }
+  validate :default_text, if: -> { texts.present? }
+
+  scope :list, -> { order(created_at: :desc) }
 
   belongs_to :provider
   has_many :user_notifications
@@ -20,8 +22,7 @@ class Notification < ApplicationRecord
 
   def default_text
     # validates the presence of the default langugae text
-    default_text = texts.with_indifferent_access[default_lang]
-    return if default_text.present?
+    return if texts.with_indifferent_access[default_lang].present?
 
     errors.add(:texts, 'missing the default language translation')
   end
