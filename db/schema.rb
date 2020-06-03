@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 2020_06_02_001633) do
     t.string "name", null: false
     t.string "type", null: false
     t.integer "min_limit", null: false
+    t.integer "user_notifications_count", default: 0
+    t.integer "last_min_count", default: 0
+    t.datetime "last_sync"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,12 +45,15 @@ ActiveRecord::Schema.define(version: 2020_06_02_001633) do
   create_table "user_notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "notification_id", null: false
+    t.bigint "provider_id", null: false
     t.text "content", null: false
     t.string "lang_code", null: false
+    t.string "notification_type", null: false
     t.boolean "incorrect_lang", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["notification_id"], name: "index_user_notifications_on_notification_id"
+    t.index ["provider_id"], name: "index_user_notifications_on_provider_id"
     t.index ["user_id"], name: "index_user_notifications_on_user_id"
   end
 
@@ -66,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_001633) do
 
   add_foreign_key "notifications", "providers"
   add_foreign_key "user_notifications", "notifications"
+  add_foreign_key "user_notifications", "providers"
   add_foreign_key "user_notifications", "users"
   add_foreign_key "users", "languages"
 end

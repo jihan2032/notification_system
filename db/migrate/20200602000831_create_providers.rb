@@ -4,6 +4,9 @@ class CreateProviders < ActiveRecord::Migration[6.0]
       t.string :name, null: false
       t.string :type, null: false
       t.integer :min_limit, null: false
+      t.integer :user_notifications_count, default: 0
+      t.integer :last_min_count, default: 0
+      t.datetime :last_sync
 
       t.timestamps
     end

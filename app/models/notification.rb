@@ -26,4 +26,20 @@ class Notification < ApplicationRecord
 
     errors.add(:texts, 'missing the default language translation')
   end
+
+  def personalized?
+    kind == 'personalized'
+  end
+
+  def construct(user)
+    lang_code = user.language.code
+    content = texts[lang_code]
+    unless content
+      incorrect_lang = true
+      lang_code = default_lang
+      content = texts[lang_code]
+    end
+    content = content % { user_name: user.first_name } if personalized?
+    { content: content, lang_code: lang_code, incorrect_lang: incorrect_lang || false }
+  end
 end

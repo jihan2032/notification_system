@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :user_notifications
 
   def notifications
-    user_notifications.order(created_at: :desc)
+    user_notifications.where(notification_type: Provider.in_app_notification_types).order(created_at: :desc)
   end
 end
