@@ -3,6 +3,7 @@ class CreateNotifications < ActiveRecord::Migration[6.0]
     create_table :notifications do |t|
       t.references :provider, null: false, foreign_key: true
       t.json :texts, null: false
+      t.string :default_lang, null: false
       t.string :kind, default: 'group'
       t.integer :user_notifications_count, default: 0
 

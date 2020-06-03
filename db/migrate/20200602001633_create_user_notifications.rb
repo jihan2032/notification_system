@@ -5,6 +5,7 @@ class CreateUserNotifications < ActiveRecord::Migration[6.0]
       t.references :notification, null: false, foreign_key: true
       t.text :content, null: false
       t.string :lang_code, null: false
+      t.boolean :incorrect_lang, default: false
 
       t.timestamps
     end

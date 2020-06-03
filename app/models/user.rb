@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  validates :phone, :email, uniqueness: true
+  validates :phone, :email, uniqueness: { case_sensitive: false }
 
   belongs_to :language, counter_cache: true
   has_many :user_notifications
