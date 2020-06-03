@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Provider < ApplicationRecord
-  PROVIDER_TYPES = %w[email sms push_notification].freeze
+  PROVIDER_TYPES = %w[Email Sms PushNotification].freeze
 
   validates :name, :min_limit, presence: true
   validates :type, inclusion: { in: PROVIDER_TYPES }
-  validates :name, uniqueness: true
+  validates :name, uniqueness: { case_sensitive: false }
 
   has_many :notifications
 
