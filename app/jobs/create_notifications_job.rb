@@ -9,6 +9,7 @@ class CreateNotificationsJob < ApplicationJob
     users.each do |user|
       user_notifications << construct_notification(notification, user)
     end
+    # firing exception in case bulk_insert didn't execute
     UserNotification.insert_all!(user_notifications)
     notification.provider.fire_requests(user_notifications)
   end

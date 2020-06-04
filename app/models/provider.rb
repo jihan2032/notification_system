@@ -24,7 +24,11 @@ class Provider < ApplicationRecord
 
   def fire_requests(user_notifications)
     user_notifications.each do |user_notification|
-      integrate_with_api(content: user_notification[:content], user_id: user_notification[:user_id])
+      FireNotificationJob.perform_later(
+        provider: self,
+        content: user_notification[:content],
+        user_id: user_notification[:user_id]
+      )
     end
   end
 
