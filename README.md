@@ -14,22 +14,22 @@ Communication tool that allows creating different type of notifications(group/pe
 You will only need to install [docker](https://docs.docker.com/engine/install) and make sure it is running on you machine
 
 ### Usage
-Create the database
-`docker-compose run api rails db:create`
-Run the application
-`docker-compose up`
+Create the database  
+`docker-compose run api rails db:create`  
+Run the application  
+`docker-compose up`  
 
 ## Development
-Seed some ready data if needed
-`docker-compose run api rails db:seed`
-Make sure your code is well formatted
-`docker-compose run api rubocop`
+Seed some ready data if needed  
+`docker-compose run api rails db:seed`  
+Make sure your code is well formatted  
+`docker-compose run api rubocop`  
 
 ## Test
-Make sure test cases are passed
-`docker-compose run api rails test`
-You can run a specific test file or directory
-`docker-compose run  api rails test -b test/models/user_test.rb`
+Make sure test cases are passed  
+`docker-compose run api rails test`  
+You can run a specific test file or directory  
+`docker-compose run  api rails test -b test/models/user_test.rb`  
 
 ## API Reference
 Documented by postman [here](https://documenter.getpostman.com/view/11605365/SztHYRZa?version=latest)
