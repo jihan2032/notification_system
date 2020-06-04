@@ -1,0 +1,8 @@
+.dockerignore
+.git
+.gitignore
+log/*.log
+tmp/
+docker-compose-data
+
+
