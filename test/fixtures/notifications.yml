@@ -1,13 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  provider: one
-  texts: 
-  kind: MyString
-  users_count: 1
+promo_code:
+  provider: twilio
+  texts:
+    en: Catch the promo code...
+    ar: الحق العرض...
+  kind: group
+  default_lang: en
+  user_notifications_count: 0
 
-two:
-  provider: two
-  texts: 
-  kind: MyString
-  users_count: 1
+news:
+  provider: sendgrid
+  texts:
+    en: hi %{user_name} New private buses...
+    ar: سلام %{user_name} جديد...
+  kind: personalized
+  default_lang: ar
+  user_notifications_count: 0

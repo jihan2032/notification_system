@@ -1,13 +1,29 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  notification: one
-  content: MyText
-  language_code: MyString
+sms_user_notification:
+  user: shadya
+  notification: promo_code
+  provider: twilio
+  content: Catch the promo code...
+  lang_code: en
+  notification_type: Sms
+  incorrect_lang: false
 
-two:
-  user: two
-  notification: two
-  content: MyText
-  language_code: MyString
+email_user_notification:
+  user: sabah
+  notification: news
+  provider: sendgrid
+  content: سلام %{user_name} جديد...
+  lang_code: ar
+  notification_type: Email
+  incorrect_lang: false
+
+in_app_user_notification:
+  user: shadya
+  notification: news
+  provider: sendgrid
+  content: سلام %{user_name} جديد...
+  lang_code: ar
+  notification_type: PushNotification
+  incorrect_lang: false
+
