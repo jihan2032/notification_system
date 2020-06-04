@@ -13,7 +13,7 @@ class UserNotificationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'invalid index status when invalid user_id' do
-    get user_notifications_url, params: { user_id: 19283 }
+    get user_notifications_url, params: { user_id: 19_283 }
     assert_response :not_found
   end
 
