@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Dashboard::UserNotificationsController < ApplicationController
+class Dashboard::UserNotificationsController < DashboardController
   before_action :validate_user_ids_presence
 
   def create

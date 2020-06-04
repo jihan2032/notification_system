@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Dashboard::NotificationsController < ApplicationController
+class Dashboard::NotificationsController < DashboardController
   def create
     notification = Notification.new notification_params
     if notification.save
