@@ -46,7 +46,7 @@ class Provider < ApplicationRecord
     if last_min_count < min_limit
       send_api_request(content: content, user_id: user_id, requests_count: last_min_count + 1)
     else
-      SendProviderRequestJob.set(wait: 60.seconds).perform_later(content: content, user_id: user_id)
+      FireNotificationJob.set(wait: 60.seconds).perform_later(provider: self, content: content, user_id: user_id)
     end
   end
 
