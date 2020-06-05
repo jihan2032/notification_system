@@ -8,6 +8,7 @@ services:
       - RAILS_ENV=development
       - DATABASE_PORT_3306_TCP_ADDR=mysql
       - DATABASE_PORT_3306_TCP_PORT=3306
+      - REDIS_URL_SIDEKIQ=redis://redis:6379/1
     links:
       - mysql
       - redis
@@ -20,14 +21,15 @@ services:
     environment:
         - MYSQL_USER=root
         - MYSQL_ALLOW_EMPTY_PASSWORD=true
-        - MYSQL_DATABASE=notifications_system_development
+        - MYSQL_DATABASE=notifications_system
     command: mysqld --skip-ssl
   redis:
-    image: "redis:4.0-alpine"
+    image: 'redis:5-alpine'
     ports:
-      - "6379:6379"
+      - '6379:6379'
     volumes:
-      - .:/redis
+      # - .:/redis
+      - 'redis:/data'
     command: redis-server
   sidekiq:
     build: .
@@ -37,6 +39,8 @@ services:
     volumes:
       - .:/app
     command: bundle exec sidekiq -c 5 -q notifications
+    environment:
+      - REDIS_URL_SIDEKIQ=redis://redis:6379/1
 volumes:
   redis:
   db:

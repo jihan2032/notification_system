@@ -16,9 +16,11 @@ You will only need to install [docker](https://docs.docker.com/engine/install) a
 ### Usage
 Create the database  
 `docker-compose run api rails db:create`  
-  
+
 Run the application  
 `docker-compose up`  
+And in another terminal run  
+`docker-compose run api sidekiq`  
 
 ## Development
 Seed some ready data if needed  
